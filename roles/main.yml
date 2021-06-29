@@ -1,0 +1,14 @@
+- name: "Installing WebServer"
+  package:
+      name: httpd
+      state: present
+
+- name: "Deploying Web Page"
+  copy:
+    content: "<h1>WebServer IP: {{ ansible_hostname }} </h1>"
+    dest: /var/www/html/index.html
+
+- name: "Starting the Service"
+  service:
+     name: "httpd"
+     state: started
